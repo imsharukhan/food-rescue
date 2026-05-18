@@ -95,66 +95,124 @@ function LandingPage({ onEnter }) {
 
       {/* ── Hero ───────────────────────────────────── */}
       <section className="land-hero" ref={heroRef}>
-        <div className={`land-hero-text reveal ${heroVisible ? 'reveal--in' : ''}`}>
-          <p className="land-kicker">
-            <span className="land-kicker-rule" />
-            AI-Powered Food Rescue
-          </p>
-          <h1 className="land-headline">
-            Rescue surplus&nbsp;food.<br />
-            <em className="land-headline-em">Feed more lives.</em>
-          </h1>
-          <p className="land-lead">
-            Connect hotels with NGOs in seconds. Every donation
-            is AI-screened for safety — zero waste, zero risk.
-          </p>
+
+        {/* Left column */}
+        <div className="land-hero-left">
+          <div className={`land-hero-text reveal ${heroVisible ? 'reveal--in' : ''}`}>
+            <p className="land-kicker">
+              <span className="land-kicker-rule" />
+              AI-Powered Food Rescue
+            </p>
+            <h1 className="land-headline">
+              Rescue surplus&nbsp;food.<br />
+              <em className="land-headline-em">Feed more lives.</em>
+            </h1>
+            <p className="land-lead">
+              Connect hotels with NGOs in seconds. Every donation
+              is AI-screened for safety — zero waste, zero risk.
+            </p>
+          </div>
+
+          {/* CTA split panel */}
+          <div
+            className={`land-split reveal ${heroVisible ? 'reveal--in' : ''}`}
+            style={{ transitionDelay: '140ms' }}
+          >
+            <button
+              className="land-split-half land-split-half--h"
+              onClick={() => onEnter('hotel')}
+            >
+              <div className="land-split-meta">
+                <span className="land-split-icon">🏨</span>
+                <div>
+                  <p className="land-split-title">I'm a Hotel</p>
+                  <p className="land-split-desc">Post surplus food, AI-screened instantly</p>
+                </div>
+              </div>
+              <span className="land-split-enter">
+                Enter <ArrowRight size={13} strokeWidth={2.5} className="land-split-arrow" />
+              </span>
+            </button>
+
+            <div className="land-split-rule" />
+
+            <button
+              className="land-split-half land-split-half--n"
+              onClick={() => onEnter('ngo')}
+            >
+              <div className="land-split-meta">
+                <span className="land-split-icon">🤝</span>
+                <div>
+                  <p className="land-split-title">I'm an NGO</p>
+                  <p className="land-split-desc">Browse verified donations, accept in one tap</p>
+                </div>
+              </div>
+              <span className="land-split-enter">
+                Enter <ArrowRight size={13} strokeWidth={2.5} className="land-split-arrow" />
+              </span>
+            </button>
+          </div>
+
+          {/* Scroll cue */}
+          <div className={`land-scroll-cue reveal ${heroVisible ? 'reveal--in' : ''}`} style={{ transitionDelay: '320ms' }}>
+            <span className="land-scroll-line" />
+            <span className="land-scroll-txt">scroll to explore</span>
+          </div>
         </div>
 
-        {/* CTA split panel */}
+        {/* Right column — live activity visual */}
         <div
-          className={`land-split reveal ${heroVisible ? 'reveal--in' : ''}`}
-          style={{ transitionDelay: '140ms' }}
+          className={`land-hero-right ${heroVisible ? 'land-hero-right--in' : ''}`}
+          aria-hidden="true"
         >
-          <button
-            className="land-split-half land-split-half--h"
-            onClick={() => onEnter('hotel')}
-          >
-            <div className="land-split-meta">
-              <span className="land-split-icon">🏨</span>
-              <div>
-                <p className="land-split-title">I'm a Hotel</p>
-                <p className="land-split-desc">Post surplus food, AI-screened instantly</p>
-              </div>
+          <div className="land-feed-shell">
+            <div className="land-feed-header">
+              <span className="land-feed-dot" />
+              <span className="land-feed-label">Live activity</span>
             </div>
-            <span className="land-split-enter">
-              Enter <ArrowRight size={13} strokeWidth={2.5} className="land-split-arrow" />
-            </span>
-          </button>
 
-          <div className="land-split-rule" />
-
-          <button
-            className="land-split-half land-split-half--n"
-            onClick={() => onEnter('ngo')}
-          >
-            <div className="land-split-meta">
-              <span className="land-split-icon">🤝</span>
-              <div>
-                <p className="land-split-title">I'm an NGO</p>
-                <p className="land-split-desc">Browse verified donations, accept in one tap</p>
+            <div className="land-ac land-ac--0">
+              <div className="land-ac-left">
+                <span className="land-ac-icon">🍱</span>
+                <div>
+                  <p className="land-ac-name">Hyderabad Biryani</p>
+                  <p className="land-ac-meta">Taj Coromandel Hotel · 60 servings</p>
+                </div>
               </div>
+              <span className="land-ac-badge land-ac-badge--new">Just posted</span>
             </div>
-            <span className="land-split-enter">
-              Enter <ArrowRight size={13} strokeWidth={2.5} className="land-split-arrow" />
-            </span>
-          </button>
+
+            <div className="land-ac land-ac--1">
+              <div className="land-ac-left">
+                <span className="land-ac-icon">✅</span>
+                <div>
+                  <p className="land-ac-name">Pasta &amp; Focaccia</p>
+                  <p className="land-ac-meta">CareFirst NGO accepted · 2m ago</p>
+                </div>
+              </div>
+              <span className="land-ac-badge land-ac-badge--ok">Accepted</span>
+            </div>
+
+            <div className="land-ac land-ac--2">
+              <div className="land-ac-left">
+                <span className="land-ac-icon">📦</span>
+                <div>
+                  <p className="land-ac-name">Sourdough &amp; Pastries</p>
+                  <p className="land-ac-meta">28 kg rescued · ~90 meals served</p>
+                </div>
+              </div>
+              <span className="land-ac-badge land-ac-badge--done">Rescued</span>
+            </div>
+
+            <div className="land-feed-footer">
+              <span className="land-feed-footer-dot" />
+              <span className="land-feed-footer-dot" />
+              <span className="land-feed-footer-dot land-feed-footer-dot--on" />
+              <span className="land-feed-footer-txt">Updated moments ago</span>
+            </div>
+          </div>
         </div>
 
-        {/* Scroll cue */}
-        <div className={`land-scroll-cue reveal ${heroVisible ? 'reveal--in' : ''}`} style={{ transitionDelay: '320ms' }}>
-          <span className="land-scroll-line" />
-          <span className="land-scroll-txt">scroll to explore</span>
-        </div>
       </section>
 
       {/* ── Impact Numbers ─────────────────────────── */}
